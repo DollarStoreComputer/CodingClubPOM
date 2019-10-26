@@ -1,0 +1,51 @@
+//Name: Ian Calderon 
+//Novice Problem of the Month 1
+
+import java.util.*;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		long startTime = System.nanoTime();
+		Scanner in = new Scanner(new File("test.txt"));
+      //the number of problems on the homework
+		long problems = in.nextInt();
+      //a or b test case for prime numbers/fibonacci
+        int nth,loop = 0,test;
+      //arrays for answers
+      	long[] primeArray = {2,3,5};
+      	long[] fibbArray = {0,1,1};
+      //loop for test cases
+        for (int x=0;x<problems;x++){
+          in.nextLine();
+          //if Prime number test; else Fibonacci test
+          if (in.next().equals("P")){
+            nth = in.nextInt();
+            //count the prime numbers
+            for (loop = 0;loop<=nth;loop++){
+              //loop for prime numbers
+              for (test=2;test <= loop;test++){
+                if (test % loop == 0){
+                  break;
+                }
+              }
+              //if its a prime number
+              if (test == loop){
+                loop++;
+                primeArray[loop] = test;
+              }
+            }
+          System.out.println(primeArray[nth]);
+          }
+          else{
+            System.out.println("");
+          }
+        }
+		
+		
+		long endTime = System.nanoTime();
+		long diffTime = endTime - startTime;
+		System.out.println(diffTime + " nanoseconds");
+	}
+
+}
